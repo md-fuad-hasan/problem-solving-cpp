@@ -17,39 +17,35 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    long long n, a, b, c, res;
+    cin >> n >> a >> b >> c;
+    long long sum = a + b + c;
+    long long div = n / sum;
 
-    if (k == 1)
+    res = 3 * div;
+
+    if (div * sum == n)
     {
-        int i = 1;
-        while (i <= n)
-        {
-            cout << i << " ";
-            i++;
-        }
-
-        cout << nl;
+        cout << res << nl;
         return;
     }
 
-    int temp = k - 1;
-    int div = n / k;
-    int i = 1, res = 1;
-    ;
-    for (int j = div + 1; j <= n; j++)
+    if (div * sum + a >= n)
     {
-        cout << j << " ";
-        if (temp == i && res != div + 1)
-        {
-            cout << res << " ";
-            res++;
-            i = 0;
-        }
-        i++;
-    }
-    cout << nl;
+        res++;
+        cout << res << nl;
 
+        return;
+    }
+    if (div * sum + a + b >= n)
+    {
+        res += 2;
+        cout << res << nl;
+
+        return;
+    }
+
+    cout << res + 3 << nl;
     return;
 }
 

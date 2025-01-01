@@ -17,38 +17,28 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
-    if (k == 1)
+    long long a[n], b[n];
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    for (int i = 0; i < n; i++)
+        cin >> b[i];
+
+    long long s = a[n - 1];
+
+    for (int i = 0; i < n - 1; i++)
     {
-        int i = 1;
-        while (i <= n)
+        if (a[i] > b[i + 1])
         {
-            cout << i << " ";
-            i++;
+            s += a[i] - b[i + 1];
         }
-
-        cout << nl;
-        return;
     }
 
-    int temp = k - 1;
-    int div = n / k;
-    int i = 1, res = 1;
-    ;
-    for (int j = div + 1; j <= n; j++)
-    {
-        cout << j << " ";
-        if (temp == i && res != div + 1)
-        {
-            cout << res << " ";
-            res++;
-            i = 0;
-        }
-        i++;
-    }
-    cout << nl;
+    cout << s << nl;
 
     return;
 }

@@ -17,37 +17,45 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
+    int arr[n + 1], check[n + 1];
+    vector<int> v;
 
-    if (k == 1)
+    for (int i = 1; i <= n; i++)
     {
-        int i = 1;
-        while (i <= n)
-        {
-            cout << i << " ";
-            i++;
-        }
-
-        cout << nl;
-        return;
+        check[i] = 0;
     }
 
-    int temp = k - 1;
-    int div = n / k;
-    int i = 1, res = 1;
-    ;
-    for (int j = div + 1; j <= n; j++)
+    for (int i = 1; i <= n; i++)
     {
-        cout << j << " ";
-        if (temp == i && res != div + 1)
-        {
-            cout << res << " ";
-            res++;
-            i = 0;
-        }
-        i++;
+        cin >> arr[i];
+        check[arr[i]] = 1;
     }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (check[i] == 0)
+        {
+            v.push_back(i);
+        }
+    }
+
+    int j = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (check[arr[i]] == 1)
+        {
+            cout << arr[i] << " ";
+            check[arr[i]] = 2;
+        }
+        else
+        {
+            cout << v[j] << " ";
+            j++;
+        }
+    }
+
     cout << nl;
 
     return;

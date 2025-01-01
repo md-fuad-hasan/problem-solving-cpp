@@ -17,38 +17,9 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-
-    if (k == 1)
-    {
-        int i = 1;
-        while (i <= n)
-        {
-            cout << i << " ";
-            i++;
-        }
-
-        cout << nl;
-        return;
-    }
-
-    int temp = k - 1;
-    int div = n / k;
-    int i = 1, res = 1;
-    ;
-    for (int j = div + 1; j <= n; j++)
-    {
-        cout << j << " ";
-        if (temp == i && res != div + 1)
-        {
-            cout << res << " ";
-            res++;
-            i = 0;
-        }
-        i++;
-    }
-    cout << nl;
+    int n;
+    cin >> n;
+    cout << n - 1 << nl;
 
     return;
 }

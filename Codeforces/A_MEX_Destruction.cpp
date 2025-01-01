@@ -17,38 +17,37 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
 
-    if (k == 1)
+    bool isZero = false, isNonZero = false;
+
+    for (int i = 0; i < n; i++)
     {
-        int i = 1;
-        while (i <= n)
-        {
-            cout << i << " ";
-            i++;
-        }
 
-        cout << nl;
+        if (a[i] != 0)
+        {
+            isNonZero = true;
+        }
+        if (a[i] == 0 && isNonZero)
+        {
+            isZero = true;
+        }
+        else if (isZero && isNonZero)
+        {
+            cout << 2 << nl;
+            return;
+        }
+    }
+    if (!isNonZero)
+    {
+        cout << 0 << nl;
         return;
     }
-
-    int temp = k - 1;
-    int div = n / k;
-    int i = 1, res = 1;
-    ;
-    for (int j = div + 1; j <= n; j++)
-    {
-        cout << j << " ";
-        if (temp == i && res != div + 1)
-        {
-            cout << res << " ";
-            res++;
-            i = 0;
-        }
-        i++;
-    }
-    cout << nl;
+    cout << 1 << nl;
 
     return;
 }
